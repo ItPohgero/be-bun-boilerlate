@@ -10,12 +10,21 @@ export const UserModel = {
             console.log(error);
         }
     },
+    FindOneWithEmail: async (email: string) => {
+        try {
+            const resp = await prisma.user.findFirst({
+                where: {
+                    email: email
+                },
+            })
+            return resp
+        } catch (error) {
+            console.log(error);
+        }
+    },
     Create: async (payload: SchemaAuthSignUpType) => {
         try {
-            const passwordHash = await Bun.password.hash(payload?.password, {
-                algorithm: "bcrypt",
-                cost: 11,
-            });
+            const passwordHash = await Bun.password.hashSync(payload?.password);
             await prisma.user.create({
                 data: {
                     name: payload?.name,

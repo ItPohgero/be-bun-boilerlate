@@ -13,6 +13,22 @@ const Status201 = ({ data }: { data: any }) => {
         "Results": data
     }
 }
+
+const Status200Authorize = ({ data }: { data: any }) => {
+    return {
+        "StatusCode": 200,
+        "Message": "Authorize",
+        "Results": data
+    }
+}
+
+const Status400 = ({ data }: { data: any }) => {
+    return {
+        "StatusCode": 401,
+        "Message": "Error",
+        "Data": data
+    }
+}
 const Status401 = () => {
     return {
         "StatusCode": 401,
@@ -20,4 +36,4 @@ const Status401 = () => {
     }
 }
 
-export { Status200, Status201, Status401 }
+export { Status200, Status200Authorize, Status201, Status400, Status401 }

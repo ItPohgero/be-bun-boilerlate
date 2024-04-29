@@ -3,6 +3,7 @@ import { SchemaAuthSignIn, SchemaAuthSignUp } from "../app/schema/auth";
 import { HandlerAuth } from "../app/handler/auth";
 import { jwt } from '@elysiajs/jwt'
 import { bearer } from '@elysiajs/bearer'
+import { Status401 } from "../utils/response";
 
 const r_auth = new Elysia({ prefix: '/auth' })
     .use(
@@ -33,7 +34,7 @@ const r_auth = new Elysia({ prefix: '/auth' })
         const profile = await jwt.verify(bearer)
         if (!profile) {
             set.status = 401
-            return 'Unauthorized'
+            return Status401()
         }
 
         return `Hello ${profile.email}`
