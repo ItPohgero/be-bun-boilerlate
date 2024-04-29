@@ -2,9 +2,9 @@ import { prisma } from "../../pkg/prisma/main"
 import { SchemaAuthSignUpType } from "../schema/auth";
 
 export const UserModel = {
-    GetAll: () => {
+    GetAll: async () => {
         try {
-            const resp = prisma.user.findMany()
+            const resp = await prisma.user.findMany()
             return resp
         } catch (error) {
             console.log(error);
@@ -16,7 +16,7 @@ export const UserModel = {
                 algorithm: "bcrypt",
                 cost: 11,
             });
-            prisma.user.create({
+            await prisma.user.create({
                 data: {
                     name: payload?.name,
                     email: payload?.email,
