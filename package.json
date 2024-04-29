@@ -6,7 +6,7 @@
     "dev": "bun run --watch src/index.ts",
     "gen:restapi": "hygen restapi new",
     "push": "git add . && git commit -m \"update\" && git push",
-    "prisma:generate": "bunx prisma generate"
+    "prisma:migrate": "bunx prisma migrate dev --name init"
   },
   "dependencies": {
     "@elysiajs/bearer": "^1.0.2",
