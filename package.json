@@ -13,13 +13,15 @@
     "@elysiajs/cron": "^1.0.3",
     "@elysiajs/jwt": "^1.0.2",
     "@elysiajs/swagger": "^1.0.4",
+    "@prisma/client": "^5.13.0",
     "elysia": "latest",
     "figlet": "^1.7.0",
     "hygen": "^6.2.11"
   },
   "devDependencies": {
     "@types/figlet": "^1.5.8",
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "prisma": "^5.13.0"
   },
   "module": "src/index.js",
   "bun-create": {
