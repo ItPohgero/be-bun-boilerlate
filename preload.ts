@@ -1,1 +1,1 @@
-console.log("preload auto run")
+console.log("itpohgero: preload auto run")

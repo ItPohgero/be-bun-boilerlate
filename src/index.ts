@@ -5,6 +5,7 @@ import r_auth from "./router/auth";
 import cors from "@elysiajs/cors";
 import { Cronjob } from "./pkg/cron/main";
 import swagger from "@elysiajs/swagger";
+import { ITPOHGERO } from "../itpohgero";
 
 const app = new Elysia()
   .state('version', Bun.env.VERSION ?? "0.0.0")
@@ -22,7 +23,5 @@ const app = new Elysia()
   .use(cors())
   .use(Cronjob.Main())
   .listen(Bun.env.PORT ?? 3000);
-
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+  
+ITPOHGERO(app)
