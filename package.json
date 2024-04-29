@@ -8,6 +8,7 @@
     "push": "git add . && git commit -m \"update\" && git push"
   },
   "dependencies": {
+    "@elysiajs/jwt": "^1.0.2",
     "elysia": "latest",
     "hygen": "^6.2.11"
   },
