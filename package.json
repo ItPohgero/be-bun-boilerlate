@@ -5,7 +5,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
     "gen:restapi": "hygen restapi new",
-    "push": "git add . && git commit -m \"update\" && git push"
+    "push": "git add . && git commit -m \"update\" && git push",
+    "prisma:generate": "bunx prisma generate"
   },
   "dependencies": {
     "@elysiajs/bearer": "^1.0.2",
