@@ -1,7 +1,7 @@
-import { AuthType, JwtType } from "../../types/jwt"
-import { Status200, Status200Authorize, Status400 } from "../../utils/response"
-import { UserModel } from "../model/user.model"
-import { SchemaAuthSignInType, SchemaAuthSignUpType } from "../schema/auth"
+import { AuthType, JwtType } from '../../types/jwt'
+import { Status200, Status200Authorize, Status400 } from '../../utils/response'
+import { UserModel } from '../model/user.model'
+import { SchemaAuthSignInType, SchemaAuthSignUpType } from '../schema/auth'
 
 type SignInPayload = {
     dto: SchemaAuthSignInType
@@ -19,7 +19,7 @@ export const HandlerAuth = {
         const { dto, auth, jwt } = payload
         try {
             const resp: any = await UserModel.FindOneWithEmail(dto?.email)
-            const isMatch = Bun.password.verifySync(dto?.password, resp?.password);
+            const isMatch = Bun.password.verifySync(dto?.password, resp?.password)
             if (isMatch) {
                 auth.set({
                     value: await jwt.sign(dto),
@@ -29,14 +29,14 @@ export const HandlerAuth = {
                 })
                 return Status200Authorize({
                     data: {
-                        token: auth.value
-                    }
+                        token: auth.value,
+                    },
                 })
             } else {
-                return Status400({ data: "Email or Password Wrong" })
+                return Status400({ data: 'Email or Password Wrong' })
             }
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     },
     SignUp: async (payload: SignUpPayload) => {
@@ -51,15 +51,14 @@ export const HandlerAuth = {
             })
             return Status200Authorize({
                 data: {
-                    token: auth.value
-                }
+                    token: auth.value,
+                },
             })
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     },
     Profile: async (data: any) => {
         return Status200({ data })
-    }
-
+    },
 }
