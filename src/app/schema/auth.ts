@@ -1,5 +1,10 @@
 import { t } from 'elysia'
 
+export type SchemaAuthSignInType = {
+    email: string
+    password: string
+}
+
 export const SchemaAuthSignIn = {
     body: t.Object({
         email: t.String({
