@@ -1,0 +1,3 @@
+# scripts to run before `bun run`-ing a file or script
+# register plugins by adding them to this list
+preload = ["./preload.ts"]
