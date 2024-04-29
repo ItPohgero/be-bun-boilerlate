@@ -1,4 +1,4 @@
-import Elysia from "elysia";
+import { Elysia } from "elysia";
 
 const r_auth = new Elysia({ prefix: '/auth' })
     .onBeforeHandle(({ set }) => {

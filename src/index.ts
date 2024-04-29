@@ -1,4 +1,4 @@
-import { Elysia } from "elysia";
+import { Elysia, t } from "elysia";
 import { HandlerHealth } from "./app/handler/health";
 import r_user from "./router/user";
 import r_auth from "./router/auth";
