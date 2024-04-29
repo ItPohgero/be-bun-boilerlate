@@ -1,5 +1,7 @@
 import { AuthType, JwtType } from "../../types/jwt"
-import { SchemaAuthSignInType } from "../schema/auth"
+import { Status200, Status201 } from "../../utils/response"
+import { UserModel } from "../model/user.model"
+import { SchemaAuthSignInType, SchemaAuthSignUpType } from "../schema/auth"
 
 type SignInPayload = {
     dto: SchemaAuthSignInType
@@ -7,7 +9,7 @@ type SignInPayload = {
     auth: AuthType['auth']
 }
 type SignUpPayload = {
-    dto: SchemaAuthSignInType
+    dto: SchemaAuthSignUpType
     jwt: JwtType
     auth: AuthType['auth']
 }
@@ -28,15 +30,18 @@ export const HandlerAuth = {
     },
     SignUp: async (payload: SignUpPayload) => {
         const { dto, auth, jwt } = payload
+        const resp: any = await UserModel.Create(dto)
         auth.set({
-            value: await jwt.sign(dto),
+            value: await jwt.sign(resp),
             httpOnly: true,
             maxAge: 7 * 86400,
             path: '/',
         })
-        return {
-            ...dto,
-            token: auth.value
-        }
+        return Status201({
+            data: {
+                ...resp,
+                token: auth.value
+            }
+        })
     }
 }

@@ -28,7 +28,7 @@ export type SchemaAuthSignUpType = {
 export const SchemaAuthSignUp = {
     body: t.Object({
         name: t.String({
-            format: 'email',
+            maxLength: 100,
             examples: "wahyu agus arifin"
         },),
         email: t.String({

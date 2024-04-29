@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { SchemaAuthSignIn } from "../app/schema/auth";
+import { SchemaAuthSignIn, SchemaAuthSignUp } from "../app/schema/auth";
 import { HandlerAuth } from "../app/handler/auth";
 import { jwt } from '@elysiajs/jwt'
 import { bearer } from '@elysiajs/bearer'
@@ -22,7 +22,13 @@ const r_auth = new Elysia({ prefix: '/auth' })
             dto: body,
         })
     }, SchemaAuthSignIn)
-    .post('/sign-up', () => 'Sign up')
+    .post('/sign-up', async ({ jwt, cookie: { auth }, body }) => {
+        return HandlerAuth.SignUp({
+            jwt,
+            auth,
+            dto: body,
+        })
+    }, SchemaAuthSignUp)
     .get('/profile', async ({ jwt, set, bearer }) => {
         const profile = await jwt.verify(bearer)
         if (!profile) {
