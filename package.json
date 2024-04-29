@@ -4,7 +4,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
-    "gen:restapi": "hygen restapi new"
+    "gen:restapi": "hygen restapi new",
+    "push": "git add . && git commit -m \"update\" && git push"
   },
   "dependencies": {
     "elysia": "latest",
