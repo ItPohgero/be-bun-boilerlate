@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 import { SchemaAuthSignIn } from "../app/schema/auth";
 import { HandlerAuth } from "../app/handler/auth";
 import { jwt } from '@elysiajs/jwt'
+import { bearer } from '@elysiajs/bearer'
 
 const r_auth = new Elysia({ prefix: '/auth' })
     .use(
@@ -10,6 +11,7 @@ const r_auth = new Elysia({ prefix: '/auth' })
             secret: Bun.env.JWTSECRET ?? "xxx"
         })
     )
+    .use(bearer())
     .onBeforeHandle((e) => {
         console.log(e);
     })
@@ -21,6 +23,15 @@ const r_auth = new Elysia({ prefix: '/auth' })
         })
     }, SchemaAuthSignIn)
     .post('/sign-up', () => 'Sign up')
-    .get('/profile', () => 'profile')
+    .get('/profile', async ({ jwt, set, bearer }) => {
+        const profile = await jwt.verify(bearer)
+        if (!profile) {
+            set.status = 401
+            return 'Unauthorized'
+        }
+
+        return `Hello ${profile.email}`
+    })
+
 
 export default r_auth
