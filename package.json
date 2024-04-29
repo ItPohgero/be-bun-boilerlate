@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@elysiajs/bearer": "^1.0.2",
+    "@elysiajs/cors": "^1.0.2",
     "@elysiajs/jwt": "^1.0.2",
     "elysia": "latest",
     "hygen": "^6.2.11"
