@@ -3,10 +3,12 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "gen:restapi": "hygen restapi new"
   },
   "dependencies": {
-    "elysia": "latest"
+    "elysia": "latest",
+    "hygen": "^6.2.11"
   },
   "devDependencies": {
     "bun-types": "latest"
