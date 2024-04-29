@@ -3,6 +3,7 @@ import { HandlerUser } from "../app/handler/user";
 import bearer from "@elysiajs/bearer";
 import jwt from "@elysiajs/jwt";
 import { JWT } from "../pkg/jwt/main";
+import { Status401 } from "../utils/response";
 
 const r_user = new Elysia({ prefix: '/main' })
     .use(
@@ -13,7 +14,11 @@ const r_user = new Elysia({ prefix: '/main' })
     )
     .use(bearer())
     .get('/users', async ({ jwt, set, bearer }) => {
-        JWT.Authorized({ jwt, set, bearer })
+        // const auth = await JWT.Authorized({ jwt, bearer })
+        // if (!auth) {
+        //     set.status = 401
+        //     return Status401()
+        // }
         return HandlerUser.GetAll()
     })
 
