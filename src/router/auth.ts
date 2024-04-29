@@ -31,13 +31,12 @@ const r_auth = new Elysia({ prefix: '/auth' })
         })
     }, SchemaAuthSignUp)
     .get('/profile', async ({ jwt, set, bearer }) => {
-        const profile = await jwt.verify(bearer)
-        if (!profile) {
+        const auth = await jwt.verify(bearer)
+        if (!auth) {
             set.status = 401
             return Status401()
         }
-
-        return `Hello ${profile.email}`
+        return HandlerAuth.Profile(auth)
     })
 
 

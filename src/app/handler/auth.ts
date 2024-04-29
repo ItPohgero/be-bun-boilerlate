@@ -1,5 +1,5 @@
 import { AuthType, JwtType } from "../../types/jwt"
-import { Status200Authorize, Status400 } from "../../utils/response"
+import { Status200, Status200Authorize, Status400 } from "../../utils/response"
 import { UserModel } from "../model/user.model"
 import { SchemaAuthSignInType, SchemaAuthSignUpType } from "../schema/auth"
 
@@ -19,7 +19,7 @@ export const HandlerAuth = {
         const { dto, auth, jwt } = payload
         try {
             const resp: any = await UserModel.FindOneWithEmail(dto?.email)
-            const isMatch = Bun.password.verifySync(dto?.password, resp?.password);            
+            const isMatch = Bun.password.verifySync(dto?.password, resp?.password);
             if (isMatch) {
                 auth.set({
                     value: await jwt.sign(dto),
@@ -57,5 +57,9 @@ export const HandlerAuth = {
         } catch (error) {
             console.log(error);
         }
+    },
+    Profile: async (data: any) => {
+        return Status200({ data })
     }
+
 }
