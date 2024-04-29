@@ -4,9 +4,18 @@ import r_user from "./router/user";
 import r_auth from "./router/auth";
 import cors from "@elysiajs/cors";
 import { Cronjob } from "./pkg/cron/main";
+import swagger from "@elysiajs/swagger";
 
 const app = new Elysia()
   .state('version', Bun.env.VERSION ?? "0.0.0")
+  .use(swagger({
+    documentation: {
+      info: {
+        title: 'itpohgero',
+        version: Bun.env.VERSION ?? "0.0.0"
+      }
+    }
+  }))
   .get("/", ({ store: { version } }) => HandlerHealth.Main({ version }))
   .use(r_auth)
   .use(r_user)
