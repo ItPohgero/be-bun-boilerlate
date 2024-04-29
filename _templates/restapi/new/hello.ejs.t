@@ -1,5 +1,5 @@
 ---
-to: app/hello.js
+to: src/model/<%= name %>.tsx
 ---
 const hello = ```
 Hello!
