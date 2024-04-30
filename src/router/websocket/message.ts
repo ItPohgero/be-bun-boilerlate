@@ -1,11 +1,19 @@
-import { Elysia } from 'elysia'
+import { Elysia, t } from 'elysia'
 
-const w_message = new Elysia({ prefix: '/ws' })
+const w_message = new Elysia({
+    prefix: '/ws',
+    websocket: {
+        idleTimeout: 30
+    }
+})
     .ws('/chat', {
-        message(ws, message) {
+        body: t.Object({
+            message: t.String()
+        }),
+        message(ws, { message }) {
             ws.send({
-                "message": message,
-                "status": "ok"
+                message,
+                time: Date.now()
             })
         }
     })
