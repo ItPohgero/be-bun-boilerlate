@@ -25,8 +25,8 @@ Boilerplate Bun Service API
 
 1. JWT
    Json Web Token
-2. Swager
-   Akses dengan path `/swager`
+2. Swagger
+   Akses dengan path `/swagger`
 3. Prisma Client
 4. Postgres
 5. Cron
