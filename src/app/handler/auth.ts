@@ -19,20 +19,24 @@ export const HandlerAuth = {
         const { dto, auth, jwt } = payload
         try {
             const resp: any = await UserModel.FindOneWithEmail(dto?.email)
-            const isMatch = Bun.password.verifySync(dto?.password, resp?.password)
-            if (isMatch) {
-                auth.set({
-                    value: await jwt.sign(dto),
-                    httpOnly: true,
-                    maxAge: 7 * 86400,
-                    path: '/',
-                })
-                return Status200Authorize({
-                    data: {
-                        token: auth.value,
-                    },
-                })
-            } else {
+            if (resp) {
+                const isMatch = Bun.password.verifySync(dto?.password, resp?.password)
+                if (isMatch) {
+                    auth.set({
+                        value: await jwt.sign(dto),
+                        httpOnly: true,
+                        maxAge: 7 * 86400,
+                        path: '/',
+                    })
+                    return Status200Authorize({
+                        data: {
+                            token: auth.value,
+                        },
+                    })
+                } else {
+                    return Status400({ data: 'Email or Password Wrong' })
+                }
+            }else{
                 return Status400({ data: 'Email or Password Wrong' })
             }
         } catch (error) {
