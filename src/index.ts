@@ -7,6 +7,8 @@ import { Cronjob } from './pkg/cron/main'
 import swagger from '@elysiajs/swagger'
 import { ITPOHGERO } from '../itpohgero'
 import w_message from './router/websocket/message'
+import { SendMail } from './pkg/mail/send'
+import { TemplateEmail } from './pkg/mail/template'
 
 const app = new Elysia()
     .state('version', Bun.env.VERSION ?? '0.0.0')
@@ -21,6 +23,15 @@ const app = new Elysia()
         }),
     )
     .get('/', ({ store: { version } }) => HandlerHealth.Main({ version }))
+    .post('/send-email', async () => {
+        return await SendMail({
+            from: "Wahyu Agus Arifin <onboarding@resend.dev>",
+            to: ['itpohgero@gmail.com'],
+            subject: "Email testing",
+            body: 'text',
+            react: TemplateEmail({ "name": "Wahyu" }),
+        })
+    })
     .use(r_auth)
     .use(r_user)
     .use(w_message)
