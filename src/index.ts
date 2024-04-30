@@ -8,7 +8,7 @@ import swagger from '@elysiajs/swagger'
 import { ITPOHGERO } from '../itpohgero'
 import w_message from './router/websocket/message'
 import { SendMail } from './pkg/mail/send'
-import { TemplateEmail } from './pkg/mail/template'
+import { TemplateEmailRegister } from './pkg/mail/temp/register'
 
 const app = new Elysia()
     .state('version', Bun.env.VERSION ?? '0.0.0')
@@ -29,7 +29,7 @@ const app = new Elysia()
             to: ['itpohgero@gmail.com'],
             subject: "Email testing",
             body: 'text',
-            react: TemplateEmail({ "name": "Wahyu" }),
+            react: TemplateEmailRegister({ "name": "Wahyu" }),
         })
     })
     .use(r_auth)

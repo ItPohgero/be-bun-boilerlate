@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-import { TemplateEmail } from './template';
+import { TemplateEmail } from './temp/register';
 
 const resend = new Resend(Bun.env.RESEND_API_KEY);
 

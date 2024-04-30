@@ -13,7 +13,7 @@ interface WaitlistEmailProps {
     name: string;
 }
 
-export const TemplateEmail = ({ name }: WaitlistEmailProps) => (
+export const TemplateEmailRegister = ({ name }: WaitlistEmailProps) => (
     <Html>
         <Head />
         <Preview>Thank you for joining our waitlist and for your patience</Preview>
