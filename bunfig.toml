@@ -3,7 +3,8 @@
 preload = ["./preload.ts"]
 
 # Set the log level. This can be one of "debug", "warn", or "error".
-logLevel = "debug" # "debug" | "warn" | "error"
+# "debug" | "warn" | "error"
+logLevel = "debug"
 
 # Folder test
 [test]

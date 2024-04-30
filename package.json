@@ -8,7 +8,8 @@
     "gen:restapi": "hygen restapi new",
     "format": "bun prettier . --write",
     "push": "git add . && git commit -m \"update\" && git push",
-    "prisma:migrate": "bunx prisma migrate dev --name init"
+    "prisma:migrate": "bunx prisma migrate dev --name init",
+    "deploy": "bun build ./src/index.ts --compile --outfile app && ./app"
   },
   "dependencies": {
     "@elysiajs/bearer": "^1.0.2",
