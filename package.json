@@ -2,7 +2,8 @@
   "name": "be-bun-boilerlate",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "env": "bun --print process.env.ENV",
+    "test": "bun test",
     "dev": "bun run --watch src/index.ts",
     "gen:restapi": "hygen restapi new",
     "format": "bun prettier . --write",

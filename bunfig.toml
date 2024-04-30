@@ -8,3 +8,5 @@ logLevel = "debug" # "debug" | "warn" | "error"
 # Folder test
 [test]
 root = "./tests"
+# always enable coverage
+coverage = true
