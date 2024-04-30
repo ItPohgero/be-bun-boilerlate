@@ -24,7 +24,7 @@ export const UserModel = {
     },
     Create: async (payload: SchemaAuthSignUpType) => {
         try {
-            const passwordHash = await Bun.password.hashSync(payload?.password)
+            const passwordHash = Bun.password.hashSync(payload?.password)
             await prisma.user.create({
                 data: {
                     name: payload?.name,
