@@ -1,5 +1,4 @@
 import { Resend } from 'resend';
-import { TemplateEmail } from './temp/register';
 
 const resend = new Resend(Bun.env.RESEND_API_KEY);
 
@@ -13,7 +12,7 @@ type SendMailType = {
 }
 
 export const SendMail = async (props: SendMailType) => {
-    const { from = 'Wahyu Agus Arifin <onboarding@resend.dev>', to, subject, body, text } = props
+    const { from = 'Wahyu Agus Arifin <onboarding@resend.dev>', to, subject, body, text, react } = props
     if (body === 'text') {
         const data = await resend.emails.send({
             from, to,
@@ -25,7 +24,7 @@ export const SendMail = async (props: SendMailType) => {
         const data = await resend.emails.send({
             from, to,
             subject,
-            react: TemplateEmail({ name: 'Vitor' }),
+            react: react ?? '',
         });
         return new Response(JSON.stringify(data));
     }
