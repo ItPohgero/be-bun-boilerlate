@@ -10,7 +10,8 @@
     "format": "bun prettier . --write",
     "push": "git add . && git commit -m \"update\" && git push",
     "prisma:migrate": "bunx prisma migrate dev --name init",
-    "deploy": "bun build ./src/index.ts --compile --outfile app && ./app"
+    "deploy": "export NODE_ENV=default && bun build ./src/index.ts --compile --outfile app && ./app",
+    "deploy:prod": "export NODE_ENV=production && bun build ./src/index.ts --compile --outfile app && ./app"
   },
   "dependencies": {
     "@elysiajs/bearer": "^1.0.2",

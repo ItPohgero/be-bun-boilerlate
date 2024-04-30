@@ -1,1 +1,1 @@
-console.log('itpohgero: preload auto run')
+console.log(`Application running in  ${Bun.env.ENV}`)
