@@ -1,5 +1,5 @@
 
-Boilerplate Bun Service API
+# Boilerplate Bun Service API
 
 ## Project Structure
 
@@ -35,6 +35,9 @@ Boilerplate Bun Service API
 8. Cors
 9. Hygen Generator
 10. Biomejs
+    Untuk lint dan refactor code seperti prettier 35 lebih cepat
+11. winston
+   Untuk history Logging aplikasi
 
 Thanks u for support
 

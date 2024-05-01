@@ -24,7 +24,7 @@ const app = new Elysia()
 		}),
 	)
 	.get("/", ({ store: { version } }) => HandlerHealth.Main({ version }))
-	.get("/test/:id", ({params}) => {
+	.get("/test/:id", ({ params }) => {
 		logger.info(params);
 		logger.error(params);
 		logger.warn(params);
