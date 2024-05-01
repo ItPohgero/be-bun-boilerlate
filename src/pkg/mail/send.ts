@@ -1,3 +1,4 @@
+import type React from "react";
 import { Resend } from "resend";
 
 const resend = new Resend(Bun.env.RESEND_API_KEY);
@@ -8,7 +9,7 @@ type SendMailType = {
 	subject: string;
 	body: "text" | "react";
 	text?: string;
-	react?: any;
+	react?: React.ReactNode;
 };
 
 export const SendMail = async (props: SendMailType) => {
@@ -28,13 +29,12 @@ export const SendMail = async (props: SendMailType) => {
 			text: text ?? "",
 		});
 		return new Response(JSON.stringify(data));
-	} else {
-		const data = await resend.emails.send({
-			from,
-			to,
-			subject,
-			react: react ?? "",
-		});
-		return new Response(JSON.stringify(data));
 	}
+	const data = await resend.emails.send({
+		from,
+		to,
+		subject,
+		react: react ?? "",
+	});
+	return new Response(JSON.stringify(data));
 };

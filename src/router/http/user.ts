@@ -1,7 +1,7 @@
-import Elysia from "elysia";
-import { HandlerUser } from "../../app/handler/user";
 import bearer from "@elysiajs/bearer";
 import jwt from "@elysiajs/jwt";
+import Elysia from "elysia";
+import { HandlerUser } from "../../app/handler/user";
 import { Status401 } from "../../utils/response";
 
 const r_user = new Elysia({ prefix: "/main" })

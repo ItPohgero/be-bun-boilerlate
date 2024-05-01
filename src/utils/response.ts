@@ -1,4 +1,4 @@
-const Status200 = ({ data }: { data: any }) => {
+const Status200 = ({ data }: { data: unknown }) => {
 	return {
 		StatusCode: 200,
 		Message: "Success",
@@ -6,7 +6,7 @@ const Status200 = ({ data }: { data: any }) => {
 	};
 };
 
-const Status201 = ({ data }: { data: any }) => {
+const Status201 = ({ data }: { data: unknown }) => {
 	return {
 		StatusCode: 201,
 		Message: "Created",
@@ -14,7 +14,7 @@ const Status201 = ({ data }: { data: any }) => {
 	};
 };
 
-const Status200Authorize = ({ data }: { data: any }) => {
+const Status200Authorize = ({ data }: { data: unknown }) => {
 	return {
 		StatusCode: 200,
 		Message: "Authorize",
@@ -22,7 +22,7 @@ const Status200Authorize = ({ data }: { data: any }) => {
 	};
 };
 
-const Status400 = ({ data }: { data: any }) => {
+const Status400 = ({ data }: { data: unknown }) => {
 	return {
 		StatusCode: 401,
 		Message: "Error",

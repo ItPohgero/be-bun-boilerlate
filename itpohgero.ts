@@ -1,7 +1,6 @@
 import figlet from "figlet";
 
-export const ITPOHGERO = (app: any) => {
-	console.log(`Running at ${app.server?.hostname}:${app.server?.port}`);
+export const ITPOHGERO = () => {
 	console.log(figlet.textSync(Bun.env.CREDIT ?? ""));
 	console.log("Author :", Bun.env.AUTHOR);
 };

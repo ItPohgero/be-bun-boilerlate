@@ -1,14 +1,14 @@
-import { Elysia, t } from "elysia";
-import { HandlerHealth } from "./app/handler/health";
-import r_user from "./router/http/user";
-import r_auth from "./router/http/auth";
 import cors from "@elysiajs/cors";
-import { Cronjob } from "./pkg/cron/main";
 import swagger from "@elysiajs/swagger";
+import { Elysia, t } from "elysia";
 import { ITPOHGERO } from "../itpohgero";
-import w_message from "./router/websocket/message";
+import { HandlerHealth } from "./app/handler/health";
+import { Cronjob } from "./pkg/cron/main";
 import { SendMail } from "./pkg/mail/send";
 import { TemplateEmailRegister } from "./pkg/mail/temp/register";
+import r_auth from "./router/http/auth";
+import r_user from "./router/http/user";
+import w_message from "./router/websocket/message";
 
 const app = new Elysia()
 	.state("version", Bun.env.VERSION ?? "0.0.0")
@@ -39,4 +39,5 @@ const app = new Elysia()
 	.use(Cronjob.Main())
 	.listen(Bun.env.PORT ?? 3000);
 
-ITPOHGERO(app);
+console.log(`Running at ${app.server?.hostname}:${app.server?.port}`);
+ITPOHGERO();

@@ -1,8 +1,8 @@
-import { Elysia } from "elysia";
-import { SchemaAuthSignIn, SchemaAuthSignUp } from "../../app/schema/auth";
-import { HandlerAuth } from "../../app/handler/auth";
-import { jwt } from "@elysiajs/jwt";
 import { bearer } from "@elysiajs/bearer";
+import { jwt } from "@elysiajs/jwt";
+import { Elysia } from "elysia";
+import { HandlerAuth } from "../../app/handler/auth";
+import { SchemaAuthSignIn, SchemaAuthSignUp } from "../../app/schema/auth";
 import { Status401 } from "../../utils/response";
 
 const r_auth = new Elysia({ prefix: "/auth" })

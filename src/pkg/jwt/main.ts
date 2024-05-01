@@ -1,4 +1,4 @@
-import { JwtType } from "../../types/jwt";
+import type { JwtType } from "../../types/jwt";
 
 export const JWT = {
 	Authorized: async ({

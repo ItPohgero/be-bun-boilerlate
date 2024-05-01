@@ -1,16 +1,38 @@
 import { prisma } from "../../pkg/prisma/main";
-import { SchemaAuthSignUpType } from "../schema/auth";
+import type { SchemaAuthSignUpType } from "../schema/auth";
+
+export type UserModelGetAllResponse = {
+	id: number;
+	email: string;
+	name: string;
+	password: string;
+};
+
+export type UserModelFindOneWithEmailResponse = {
+	id: number;
+	email: string;
+	name: string;
+	password: string;
+};
+
+export type UserModelCreateResponse = {
+	email: string;
+	name: string;
+};
 
 export const UserModel = {
-	GetAll: async () => {
+	GetAll: async (): Promise<UserModelGetAllResponse[]> => {
 		try {
 			const resp = await prisma.user.findMany();
 			return resp;
 		} catch (error) {
 			console.log(error);
+			throw error;
 		}
 	},
-	FindOneWithEmail: async (email: string) => {
+	FindOneWithEmail: async (
+		email: string,
+	): Promise<UserModelFindOneWithEmailResponse | null> => {
 		try {
 			const resp = await prisma.user.findFirst({
 				where: {
@@ -20,9 +42,12 @@ export const UserModel = {
 			return resp;
 		} catch (error) {
 			console.log(error);
+			throw error;
 		}
 	},
-	Create: async (payload: SchemaAuthSignUpType) => {
+	Create: async (
+		payload: SchemaAuthSignUpType,
+	): Promise<UserModelCreateResponse> => {
 		try {
 			const passwordHash = Bun.password.hashSync(payload?.password);
 			await prisma.user.create({
@@ -38,6 +63,7 @@ export const UserModel = {
 			};
 		} catch (error) {
 			console.log(error);
+			throw error;
 		}
 	},
 };
