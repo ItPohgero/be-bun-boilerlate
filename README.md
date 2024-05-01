@@ -37,7 +37,7 @@
 10. Biomejs
     Untuk lint dan refactor code seperti prettier 35x lebih cepat
 11. winston
-   Untuk history Logging aplikasi
+    Untuk history Logging aplikasi
 
 Thanks u for support
 
