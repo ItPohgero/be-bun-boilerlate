@@ -14,7 +14,8 @@
 		"push": "bun run lint && bun run format && git add . && git commit -m \"update\" && git push",
 		"prisma:migrate": "bunx prisma migrate dev --name init",
 		"deploy": "export NODE_ENV=local && bun build ./src/index.ts --compile --outfile app && ./app",
-		"deploy:prod": "bun run lint && bun run format && export NODE_ENV=production && bun build ./src/index.ts --compile --outfile app && ./app"
+		"deploy:prod": "bun run lint && bun run format && export NODE_ENV=production && bun build ./src/index.ts --compile --outfile app && ./app",
+		"clear:log": "rm -rf log/*"
 	},
 	"dependencies": {
 		"@elysiajs/bearer": "^1.0.2",
@@ -29,7 +30,8 @@
 		"figlet": "^1.7.0",
 		"hygen": "^6.2.11",
 		"react": "^18.3.1",
-		"resend": "^3.2.0"
+		"resend": "^3.2.0",
+		"winston": "^3.13.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.7.2",

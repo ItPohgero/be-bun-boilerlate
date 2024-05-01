@@ -9,6 +9,7 @@ import { TemplateEmailRegister } from "./pkg/mail/temp/register";
 import r_auth from "./router/http/auth";
 import r_user from "./router/http/user";
 import w_message from "./router/websocket/message";
+import { logger } from "./pkg/log/main";
 
 const app = new Elysia()
 	.state("version", Bun.env.VERSION ?? "0.0.0")
@@ -23,6 +24,11 @@ const app = new Elysia()
 		}),
 	)
 	.get("/", ({ store: { version } }) => HandlerHealth.Main({ version }))
+	.get("/test/:id", ({params}) => {
+		logger.info(params);
+		logger.error(params);
+		logger.warn(params);
+	})
 	.post("/send-email", async () => {
 		return await SendMail({
 			from: "Wahyu Agus Arifin <onboarding@resend.dev>",
