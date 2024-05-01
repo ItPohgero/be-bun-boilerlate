@@ -35,7 +35,7 @@
 8. Cors
 9. Hygen Generator
 10. Biomejs
-    Untuk lint dan refactor code seperti prettier 35 lebih cepat
+    Untuk lint dan refactor code seperti prettier 35x lebih cepat
 11. winston
    Untuk history Logging aplikasi
 
