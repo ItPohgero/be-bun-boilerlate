@@ -1,41 +1,42 @@
 {
-  "name": "be-bun-boilerlate",
-  "version": "1.0.50",
-  "scripts": {
-    "env": "bun --print process.env.ENV",
-    "test": "bun test",
-    "test:watch": "bun test --watch",
-    "dev": "bun run --watch src/index.ts",
-    "gen:restapi": "hygen restapi new",
-    "format": "bun prettier . --write",
-    "push": "git add . && git commit -m \"update\" && git push",
-    "prisma:migrate": "bunx prisma migrate dev --name init",
-    "deploy": "export NODE_ENV=default && bun build ./src/index.ts --compile --outfile app && ./app",
-    "deploy:prod": "export NODE_ENV=production && bun build ./src/index.ts --compile --outfile app && ./app"
-  },
-  "dependencies": {
-    "@elysiajs/bearer": "^1.0.2",
-    "@elysiajs/cors": "^1.0.2",
-    "@elysiajs/cron": "^1.0.3",
-    "@elysiajs/jwt": "^1.0.2",
-    "@elysiajs/swagger": "^1.0.4",
-    "@prisma/client": "^5.13.0",
-    "@react-email/components": "^0.0.17",
-    "@types/react": "^18.3.1",
-    "elysia": "latest",
-    "figlet": "^1.7.0",
-    "hygen": "^6.2.11",
-    "react": "^18.3.1",
-    "resend": "^3.2.0"
-  },
-  "devDependencies": {
-    "@types/figlet": "^1.5.8",
-    "bun-types": "latest",
-    "prettier": "3.2.5",
-    "prisma": "^5.13.0"
-  },
-  "module": "src/index.js",
-  "bun-create": {
-    "start": "bun run src/index.ts"
-  }
+	"name": "be-bun-boilerlate",
+	"version": "1.0.50",
+	"scripts": {
+		"env": "bun --print process.env.ENV",
+		"test": "bun test",
+		"test:watch": "bun test --watch",
+		"dev": "bun run --watch src/index.ts",
+		"gen:restapi": "hygen restapi new",
+		"format": "bunx @biomejs/biome format --write .",
+		"push": "git add . && git commit -m \"update\" && git push",
+		"prisma:migrate": "bunx prisma migrate dev --name init",
+		"deploy": "export NODE_ENV=default && bun build ./src/index.ts --compile --outfile app && ./app",
+		"deploy:prod": "export NODE_ENV=production && bun build ./src/index.ts --compile --outfile app && ./app"
+	},
+	"dependencies": {
+		"@elysiajs/bearer": "^1.0.2",
+		"@elysiajs/cors": "^1.0.2",
+		"@elysiajs/cron": "^1.0.3",
+		"@elysiajs/jwt": "^1.0.2",
+		"@elysiajs/swagger": "^1.0.4",
+		"@prisma/client": "^5.13.0",
+		"@react-email/components": "^0.0.17",
+		"@types/react": "^18.3.1",
+		"elysia": "latest",
+		"figlet": "^1.7.0",
+		"hygen": "^6.2.11",
+		"react": "^18.3.1",
+		"resend": "^3.2.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.7.2",
+		"@types/figlet": "^1.5.8",
+		"bun-types": "latest",
+		"prettier": "3.2.5",
+		"prisma": "^5.13.0"
+	},
+	"module": "src/index.js",
+	"bun-create": {
+		"start": "bun run src/index.ts"
+	}
 }

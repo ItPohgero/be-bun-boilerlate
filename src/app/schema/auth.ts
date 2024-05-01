@@ -1,42 +1,42 @@
-import { t } from 'elysia'
+import { t } from "elysia";
 
 export type SchemaAuthSignInType = {
-    email: string
-    password: string
-}
+	email: string;
+	password: string;
+};
 
 export const SchemaAuthSignIn = {
-    body: t.Object({
-        email: t.String({
-            format: 'email',
-            examples: 'wahyu@gmail.com',
-        }),
-        password: t.String({
-            minLength: 4,
-            examples: '87#!Ab',
-        }),
-    }),
-}
+	body: t.Object({
+		email: t.String({
+			format: "email",
+			examples: "wahyu@gmail.com",
+		}),
+		password: t.String({
+			minLength: 4,
+			examples: "87#!Ab",
+		}),
+	}),
+};
 
 export type SchemaAuthSignUpType = {
-    name: string
-    email: string
-    password: string
-}
+	name: string;
+	email: string;
+	password: string;
+};
 
 export const SchemaAuthSignUp = {
-    body: t.Object({
-        name: t.String({
-            maxLength: 100,
-            examples: 'wahyu agus arifin',
-        }),
-        email: t.String({
-            format: 'email',
-            examples: 'wahyu@gmail.com',
-        }),
-        password: t.String({
-            minLength: 4,
-            examples: '87#!Ab',
-        }),
-    }),
-}
+	body: t.Object({
+		name: t.String({
+			maxLength: 100,
+			examples: "wahyu agus arifin",
+		}),
+		email: t.String({
+			format: "email",
+			examples: "wahyu@gmail.com",
+		}),
+		password: t.String({
+			minLength: 4,
+			examples: "87#!Ab",
+		}),
+	}),
+};
