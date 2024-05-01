@@ -1,5 +1,5 @@
 import type { AuthType, JwtType } from "../../types/jwt";
-import { Status200, Status400 } from "../../utils/response";
+import { Status200, Status400, Status500 } from "../../utils/response";
 import {
 	type UMFindOneWithEmailRes,
 	UserModel,
@@ -46,7 +46,7 @@ export const HandlerAuth = {
 			}
 			return Status400({ data: "Email or Password Wrong" });
 		} catch (error) {
-			console.log(error);
+			return Status500();
 		}
 	},
 	SignUp: async (payload: SignUpPayload) => {
@@ -65,7 +65,7 @@ export const HandlerAuth = {
 				},
 			});
 		} catch (error) {
-			console.log(error);
+			return Status500();
 		}
 	},
 	Profile: async (data: unknown) => {
