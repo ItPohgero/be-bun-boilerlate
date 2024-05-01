@@ -1,5 +1,5 @@
 import type { AuthType, JwtType } from "../../types/jwt";
-import { Status200, Status200Authorize, Status400 } from "../../utils/response";
+import { Status200, Status400 } from "../../utils/response";
 import {
 	UserModel,
 	type UserModelCreateResponse,
@@ -36,7 +36,7 @@ export const HandlerAuth = {
 						maxAge: 7 * 86400,
 						path: "/",
 					});
-					return Status200Authorize({
+					return Status200({
 						data: {
 							token: auth.value,
 						},
@@ -59,7 +59,7 @@ export const HandlerAuth = {
 				maxAge: 7 * 86400,
 				path: "/",
 			});
-			return Status200Authorize({
+			return Status200({
 				data: {
 					token: auth.value,
 				},
