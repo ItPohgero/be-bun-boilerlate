@@ -34,7 +34,7 @@ Boilerplate Bun Service API
 7. Send Mail with Resend
 8. Cors
 9. Hygen Generator
-10. Prettier
+10. Biomejs
 
 Thanks u for support
 
