@@ -6,6 +6,13 @@ type IPO = {
 };
 export const Runner = (i: IPO) => {
 	console.log(figlet.textSync(Bun.env.CREDIT ?? ""));
-	console.log("Author :", Bun.env.AUTHOR);
+	const data = [
+		{ key: "Host", value: i?.hostname },
+		{ key: "Port", value: i?.port },
+		{ key: "Env", value: Bun.env.ENV },
+		{ key: "Author", value: Bun.env.AUTHOR },
+		{ key: "Credit", value: Bun.env.CREDIT },
+	];
+	console.table(data);
 	console.log(`Running at ${i.hostname}:${i.port}`);
 };
