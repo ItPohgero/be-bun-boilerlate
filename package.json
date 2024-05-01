@@ -32,7 +32,6 @@
 		"@biomejs/biome": "1.7.2",
 		"@types/figlet": "^1.5.8",
 		"bun-types": "latest",
-		"prettier": "3.2.5",
 		"prisma": "^5.13.0"
 	},
 	"module": "src/index.js",
