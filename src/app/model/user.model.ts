@@ -8,7 +8,7 @@ export type UserModelGetAllResponse = {
 	password: string;
 };
 
-export type UserModelFindOneWithEmailResponse = {
+export type UMFindOneWithEmailRes = {
 	id: number;
 	email: string;
 	name: string;
@@ -31,7 +31,7 @@ export const UserModel = {
 	},
 	FindOneWithEmail: async (
 		email: string,
-	): Promise<UserModelFindOneWithEmailResponse | null> => {
+	): Promise<UMFindOneWithEmailRes | null> => {
 		try {
 			return await prisma.user.findFirst({
 				where: {

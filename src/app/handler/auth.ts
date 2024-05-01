@@ -1,9 +1,9 @@
 import type { AuthType, JwtType } from "../../types/jwt";
 import { Status200, Status400 } from "../../utils/response";
 import {
+	type UMFindOneWithEmailRes,
 	UserModel,
 	type UserModelCreateResponse,
-	type UserModelFindOneWithEmailResponse,
 } from "../model/user.model";
 import type {
 	SchemaAuthSignInType,
@@ -25,7 +25,7 @@ export const HandlerAuth = {
 	SignIn: async (payload: SignInPayload) => {
 		const { dto, auth, jwt } = payload;
 		try {
-			const resp: UserModelFindOneWithEmailResponse | null =
+			const resp: UMFindOneWithEmailRes | null =
 				await UserModel.FindOneWithEmail(dto?.email);
 			if (resp) {
 				const isMatch = Bun.password.verifySync(dto?.password, resp?.password);
