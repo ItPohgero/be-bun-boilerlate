@@ -23,8 +23,7 @@ export type UserModelCreateResponse = {
 export const UserModel = {
 	GetAll: async (): Promise<UserModelGetAllResponse[]> => {
 		try {
-			const resp = await prisma.user.findMany();
-			return resp;
+			return await prisma.user.findMany();
 		} catch (error) {
 			console.log(error);
 			throw error;
@@ -34,12 +33,11 @@ export const UserModel = {
 		email: string,
 	): Promise<UserModelFindOneWithEmailResponse | null> => {
 		try {
-			const resp = await prisma.user.findFirst({
+			return await prisma.user.findFirst({
 				where: {
 					email: email,
 				},
 			});
-			return resp;
 		} catch (error) {
 			console.log(error);
 			throw error;
