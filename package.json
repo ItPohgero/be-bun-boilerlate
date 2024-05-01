@@ -13,7 +13,7 @@
 		"format": "bunx @biomejs/biome format --write .",
 		"push": "bun run lint && bun run format && git add . && git commit -m \"update\" && git push",
 		"prisma:migrate": "bunx prisma migrate dev --name init",
-		"deploy": "export NODE_ENV=default && bun build ./src/index.ts --compile --outfile app && ./app",
+		"deploy": "export NODE_ENV=local && bun build ./src/index.ts --compile --outfile app && ./app",
 		"deploy:prod": "bun run lint && bun run format && export NODE_ENV=production && bun build ./src/index.ts --compile --outfile app && ./app"
 	},
 	"dependencies": {
