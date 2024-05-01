@@ -1,7 +1,7 @@
 import cors from "@elysiajs/cors";
 import swagger from "@elysiajs/swagger";
 import { Elysia, t } from "elysia";
-import { ITPOHGERO } from "../itpohgero";
+import { Runner } from "../runner";
 import { HandlerHealth } from "./app/handler/health";
 import { Cronjob } from "./pkg/cron/main";
 import { SendMail } from "./pkg/mail/send";
@@ -39,7 +39,7 @@ const app = new Elysia()
 	.use(Cronjob.Main())
 	.listen(Bun.env.PORT ?? 3000);
 
-ITPOHGERO({
+Runner({
 	hostname: app.server?.hostname ?? "",
 	port: app.server?.port ?? 0,
 });
