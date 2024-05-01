@@ -1,7 +1,11 @@
 import figlet from "figlet";
 
-export const ITPOHGERO = (log: string) => {
+type IPO = {
+	hostname: string;
+	port: number;
+};
+export const ITPOHGERO = (i: IPO) => {
 	console.log(figlet.textSync(Bun.env.CREDIT ?? ""));
 	console.log("Author :", Bun.env.AUTHOR);
-	console.log(log);
+	console.log(`Running at ${i.hostname}:${i.port}`);
 };

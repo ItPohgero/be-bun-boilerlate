@@ -39,4 +39,7 @@ const app = new Elysia()
 	.use(Cronjob.Main())
 	.listen(Bun.env.PORT ?? 3000);
 
-ITPOHGERO(`Running at ${app.server?.hostname}:${app.server?.port}`);
+ITPOHGERO({
+	hostname: app.server?.hostname ?? "",
+	port: app.server?.port ?? 0,
+});
