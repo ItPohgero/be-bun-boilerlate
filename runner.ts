@@ -7,12 +7,12 @@ type IPO = {
 export const Runner = (i: IPO) => {
 	console.log(figlet.textSync(Bun.env.CREDIT ?? ""));
 	const data = [
-		{ key: "Host", value: i?.hostname },
-		{ key: "Port", value: i?.port },
-		{ key: "Env", value: Bun.env.ENV },
-		{ key: "Author", value: Bun.env.AUTHOR },
-		{ key: "Credit", value: Bun.env.CREDIT },
+		{ key: "Host", desc: i?.hostname },
+		{ key: "Port", desc: i?.port },
+		{ key: "Env", desc: Bun.env.ENV },
+		{ key: "Author", desc: Bun.env.AUTHOR },
+		{ key: "Credit", desc: Bun.env.CREDIT },
 	];
-	console.table(data);
+	console.table(data, ["key", "desc"]);
 	console.log(`Running at ${i.hostname}:${i.port}`);
 };
