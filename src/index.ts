@@ -7,8 +7,8 @@ import { Cronjob } from "./pkg/cron/main";
 import r_auth from "./router/http/auth";
 import r_user from "./router/http/user";
 import w_message from "./router/websocket/message";
-import v_auth from "./router/view/auth";
 import r_mail from "./router/http/mail";
+import r_otp from "./router/http/otp";
 
 const app = new Elysia()
 	.state("version", Bun.env.VERSION ?? "0.0.0")
@@ -23,9 +23,8 @@ const app = new Elysia()
 		}),
 	)
 	.get("/", HandlerHealth.Main)
-	.get("/totp", HandlerHealth.Totp)
 	.get("/test/:id", HandlerHealth.Test)
-	.use(v_auth)
+	.use(r_otp)
 	.use(r_mail)
 	.use(r_auth)
 	.use(r_user)

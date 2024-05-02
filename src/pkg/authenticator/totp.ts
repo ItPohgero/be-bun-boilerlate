@@ -1,15 +1,14 @@
 import * as OTPAuth from "otpauth";
+import { logger } from "../log/main";
 
 type OTPType = {
-	issuer: string;
-	label: string;
 	screet: string;
 };
 
 export const OTP = (data: OTPType) => {
 	const totp = new OTPAuth.TOTP({
-		issuer: data?.issuer ?? "APP",
-		label: data?.label ?? "itpohgero",
+		issuer: Bun.env.TOTP_ISSUER,
+		label: Bun.env.TOTP_LABEL,
 		algorithm: "SHA1",
 		digits: 6,
 		period: 30,
@@ -28,4 +27,28 @@ export const OTP = (data: OTPType) => {
 	// Convert from Google Authenticator key URI.
 	// const totp: any = OTPAuth.URI.parse(uri);
 	// logger.info(totp)
+
+	return { uri, delta };
+};
+
+type VerifyOTPType = {
+	enteredPin: string;
+	screet: string;
+};
+export const VerifyOTP = (data: VerifyOTPType) => {
+	const totp = new OTPAuth.TOTP({
+		issuer: Bun.env.TOTP_ISSUER,
+		label: Bun.env.TOTP_LABEL,
+		algorithm: "SHA1",
+		digits: 6,
+		period: 30,
+		secret: OTPAuth.Secret.fromBase32(data?.screet),
+	});
+
+	// Generate the current OTP for comparison
+	const currentToken = totp.generate();
+	// Validate the entered PIN against the current token
+	const isValid = totp.validate({ token: data?.enteredPin, window: 1 });
+	// Return verification result
+	return { isValid, currentToken }; // Optionally include currentToken for informational purposes
 };

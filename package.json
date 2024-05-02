@@ -26,11 +26,13 @@
 		"@elysiajs/swagger": "^1.0.4",
 		"@prisma/client": "^5.13.0",
 		"@react-email/components": "^0.0.17",
+		"@types/qrcode": "^1.5.5",
 		"@types/react": "^18.3.1",
 		"elysia": "latest",
 		"figlet": "^1.7.0",
 		"hygen": "^6.2.11",
 		"otpauth": "^9.2.3",
+		"qrcode": "^1.5.3",
 		"react": "^18.3.1",
 		"resend": "^3.2.0",
 		"winston": "^3.13.0"
