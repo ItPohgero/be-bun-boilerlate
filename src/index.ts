@@ -23,6 +23,7 @@ const app = new Elysia()
 		}),
 	)
 	.get("/", HandlerHealth.Main)
+	.get("/totp", HandlerHealth.Totp)
 	.get("/test/:id", HandlerHealth.Test)
 	.post("/send-email", async () => {
 		return await SendMail({

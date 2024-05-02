@@ -15,4 +15,7 @@ export const HandlerHealth = {
 		logger.error(params);
 		logger.warn(params);
 	},
+	Totp: () => {
+		// return uri
+	},
 };
