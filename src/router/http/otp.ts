@@ -7,7 +7,7 @@ import { QRImage } from "../../utils/qrcode";
 const r_otp = new Elysia({ prefix: "/view" })
 	.use(html())
 	.get("/get-otp", async () => {
-		const { uri } = OTP({ screet: "varra" });
+		const { uri } = OTP({ screet: "agus" });
 		const svg = await QRImage(uri);
 		return Status200({
 			data: {
@@ -20,7 +20,7 @@ const r_otp = new Elysia({ prefix: "/view" })
 		"check-otp",
 		async ({ body }) => {
 			const { isValid, currentToken } = VerifyOTP({
-				screet: "varra",
+				screet: "agus",
 				enteredPin: body?.pin,
 			});
 			console.log(isValid, currentToken);
