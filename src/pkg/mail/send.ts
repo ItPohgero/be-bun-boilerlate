@@ -9,7 +9,7 @@ type SendMailType = {
 	subject: string;
 	body: "text" | "react";
 	text?: string;
-	react?: React.ReactNode;
+	react?: React.ReactElement | React.ReactNode | null;
 };
 
 export const SendMail = async (props: SendMailType) => {
