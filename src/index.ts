@@ -23,12 +23,8 @@ const app = new Elysia()
 			},
 		}),
 	)
-	.get("/", ({ store: { version } }) => HandlerHealth.Main({ version }))
-	.get("/test/:id", ({ params }) => {
-		logger.info(params);
-		logger.error(params);
-		logger.warn(params);
-	})
+	.get("/", HandlerHealth.Main)
+	.get("/test/:id", HandlerHealth.Test)
 	.post("/send-email", async () => {
 		return await SendMail({
 			from: "Wahyu Agus Arifin <onboarding@resend.dev>",
