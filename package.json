@@ -25,7 +25,7 @@
 		"@elysiajs/jwt": "^1.0.2",
 		"@elysiajs/swagger": "^1.0.4",
 		"@prisma/client": "^5.13.0",
-		"@react-email/components": "^0.0.17",
+		"@react-email/components": "^0.0.22",
 		"@types/qrcode": "^1.5.5",
 		"@types/react": "^18.3.1",
 		"elysia": "latest",
